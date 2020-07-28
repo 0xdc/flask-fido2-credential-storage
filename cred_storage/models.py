@@ -16,8 +16,16 @@ class User(Base):
     public_key    = Column(JSON)
 
     def __init__(self, auth_data):
+        # aaguid: probably zeroes, maybe not in FIDO2? 16 bytes
         self.aaguid        = bytes2int( auth_data.credential_data.aaguid )
+
+        # credential_id: too large to store as a BigInteger, so converted to string and stored in a Text field
+        # we do lookups on this (see cls.get_by())
         self.credential_id = str(bytes2int( auth_data.credential_data.credential_id ))
+
+        # public_key: AttestedCredentalData, like a dict but:
+        #  * has numerical keys that get converted to strings
+        #  * bytes cannot be serialised into JSON, so turn them into ints
         self.public_key    = dict({
             **auth_data.credential_data.public_key,
             -2: bytes2int( auth_data.credential_data.public_key.get(-2) ),
@@ -37,6 +45,9 @@ class User(Base):
 
     @property
     def to_cose(self):
+        # TODO: un-hardcode this
+        # * convert JSON string key to dict int keys
+        # * convert x/y-coordinates from int to bytes (for es256, at least)
         return dict({
             1: self.public_key['1'],
             3: self.public_key['3'],
