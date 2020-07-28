@@ -25,5 +25,5 @@ License
 -------
 
 * MIT.
-* Uses MIT code published by Yubico AB in some flask and frontend (html5, css, javascript) code.
+* Uses 2-clause BSD license code published by Yubico AB in some flask and frontend (html5, css, javascript) code.
 * Uses MIT code published by Patrick Gansterer in cbor.js library.
