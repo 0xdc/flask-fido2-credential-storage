@@ -20,6 +20,10 @@ Support
 |---|-----|--------------|
 | Chrome Linux | X | X |
 | Firefox Linux | X | |
+| Yubikey Neo/4 | X | |
+| Yubikey 5 | X | Check Firmware Version |
+| HyperFIDO mini | X | X |
+| Google Titan | X | |
 
 License
 -------
