@@ -4,7 +4,6 @@ import json
 
 from fido2.utils import bytes2int, int2bytes
 from fido2.ctap2 import AttestedCredentialData
-from fido2.cose  import CoseKey
 
 from .database import Base
 

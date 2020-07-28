@@ -53,9 +53,6 @@ from ..models import User
 
 @app.route("/api/register/begin", methods=["POST"])
 def register_begin():
-    if 'User' in session:
-        abort(409)
-
     registration_data, state = server.register_begin(
         {
             "id": os.urandom(32),
@@ -123,5 +120,4 @@ def authenticate_complete():
         auth_data,
         signature,
     )
-    session['User'] = user.id
     return cbor.encode({"status": "OK"})
