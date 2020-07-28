@@ -31,3 +31,9 @@ License
 * MIT.
 * Uses 2-clause BSD license code published by Yubico AB in some flask and frontend (html5, css, javascript) code.
 * Uses MIT code published by Patrick Gansterer in cbor.js library.
+
+Documentation
+-------------
+* https://www.w3.org/TR/webauthn/
+* https://flask.palletsprojects.com/en/1.1.x/patterns/sqlalchemy/#declarative
+* https://github.com/Yubico/python-fido2/tree/master/examples/server
