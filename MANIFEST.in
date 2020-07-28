@@ -1,0 +1,1 @@
+recursive-include cred_storage/static index.html cbor.js
