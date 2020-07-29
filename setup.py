@@ -12,7 +12,9 @@ setup(
     install_requires=[
         'Flask',
         'sqlalchemy',
-        'pymysql',
         'fido2',
-    ]
+    ],
+    extras_require={
+        'mysql': [ 'pymysql' ],
+    }
 )
