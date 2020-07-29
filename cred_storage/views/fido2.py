@@ -108,16 +108,17 @@ def authenticate_complete():
     except IndexError:
         abort(400)
 
-    user = User.get_by(credential_id)
-    if user is None:
+    try:
+        user = User.get_by(credential_id)
+        server.authenticate_complete(
+            session.pop("state"),
+            [user.create_data],
+            credential_id,
+            client_data,
+            auth_data,
+            signature,
+        )
+    except Exception:
         abort(401)
 
-    server.authenticate_complete(
-        session.pop("state"),
-        [user.create_data],
-        credential_id,
-        client_data,
-        auth_data,
-        signature,
-    )
     return cbor.encode({"status": "OK"})
