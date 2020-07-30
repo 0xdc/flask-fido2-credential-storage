@@ -39,17 +39,19 @@ from fido2.client import ClientData
 from fido2.server import Fido2Server, PublicKeyCredentialRpEntity
 from fido2.ctap2 import AttestationObject, AuthenticatorData
 from fido2 import cbor
-from flask import Flask, session, request, redirect, abort
+from flask import session, request, abort
 
 import os
+
+
+from . import app
+from ..database import db_session
+from ..models import User
 
 
 rp = PublicKeyCredentialRpEntity("localhost", "Demo server")
 server = Fido2Server(rp)
 
-from . import app
-from ..database import db_session
-from ..models import User
 
 @app.route("/api/register/begin", methods=["POST"])
 def register_begin():

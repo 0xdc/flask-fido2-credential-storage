@@ -15,6 +15,6 @@ setup(
         'fido2',
     ],
     extras_require={
-        'mysql': [ 'pymysql' ],
+        'mysql': ['pymysql'],
     }
 )
