@@ -4,3 +4,4 @@ def test_app_import():
         'TESTING': True,
         'DATABASE': 'sqlite:///:memory:'
     })
+    assert app.testing

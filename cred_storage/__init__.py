@@ -23,24 +23,17 @@ def create_app(test_config=None):
     except OSError:
         pass
 
-    with app.app_context():
-        from .database import db_session, init_db
-
-        from . import views  # noqa E402 F401
-        from .views import fido2  # noqa E402 F401
-
-        init_db()
-
     @app.teardown_appcontext
     def shutdown_session(exception=None):
+        from .database import db_session
         db_session.remove()
-
 
     @app.cli.add_command
     @click.command('init-db')
     @cli.with_appcontext
     def init_db_command():
         click.echo("initialising the database tables")
+        from .database import init_db
         init_db()
 
     return app
