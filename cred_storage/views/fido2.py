@@ -39,12 +39,11 @@ from fido2.client import ClientData
 from fido2.server import Fido2Server, PublicKeyCredentialRpEntity
 from fido2.ctap2 import AttestationObject, AuthenticatorData
 from fido2 import cbor
-from flask import session, request, abort
+from flask import session, request, abort, current_app as app
 
 import os
 
 
-from . import app
 from ..database import db_session
 from ..models import User
 

@@ -1,7 +1,6 @@
-from .. import app
-from flask import redirect
+from flask import redirect, current_app
 
 
-@app.route('/')
+@current_app.route('/')
 def index():
     return redirect('/index.html')
