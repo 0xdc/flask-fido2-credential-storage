@@ -3,3 +3,4 @@ db.sqlite
 build/
 dist/
 *.egg-info/
+.coverage
