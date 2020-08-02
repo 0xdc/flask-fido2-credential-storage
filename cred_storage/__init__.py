@@ -7,7 +7,7 @@ def create_app(test_config=None):
     app = Flask(__name__, static_url_path="", instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY=os.urandom(32),
-        DATABASE=os.environ.get("CREDSTORE_DATABASE", "sqlite:///db.sqlite"),
+        DATABASE=os.environ.get("CREDSTORE_DATABASE", "sqlite:///{}".format(os.path.join(app.instance_path, "db.sqlite"))),
     )
 
     if test_config is None:
